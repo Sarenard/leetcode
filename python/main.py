@@ -12,7 +12,6 @@ if len(sys.argv) == 1:
         os.system(f"python main.py {nb}")
 else:
     testnb = int(sys.argv[1])
-    # TODO : subprocess run
     command = f"python ./{testnb}/test.py"
     p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     if p.stdout is None:
