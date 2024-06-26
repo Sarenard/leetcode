@@ -7,6 +7,11 @@ import os
 PRECISION = 4
 
 if len(sys.argv) == 1:
+    todo_file = open('TODO', "r").readlines()
+    todo_file = [(x[:-1] if x[-1] == "\n" else x) for x in todo_file]
+    colorprint("Problems to do :", color = "blue")
+    for x in todo_file:
+        colorprint(x, color = "blue")
     result = requests.get("https://alfa-leetcode-api.onrender.com/userProfile/Sarenard").json()
     colorprint(f"Total : {result['totalSolved']}/{result['totalQuestions']} (\
 {round(result['totalSolved']/result['totalQuestions'], PRECISION)}%)", color = "cyan")
@@ -17,7 +22,7 @@ if len(sys.argv) == 1:
     colorprint(f"Hard : {result['hardSolved']}/{result['totalHard']} (\
 {round(result['hardSolved']/result['totalHard'], PRECISION)}%)", color = "red")
     long = os.listdir(".")
-    long = [int(x) for x in long if x not in ["main.py", "mod"]]
+    long = [int(x) for x in long if x not in ["main.py", "mod", "TODO"]]
     long.sort()
     long = [str(x) for x in long]
     for nb in long:
