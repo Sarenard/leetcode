@@ -22,7 +22,7 @@ if len(sys.argv) == 1:
     colorprint(f"Hard : {result['hardSolved']}/{result['totalHard']} (\
 {round(result['hardSolved']/result['totalHard'], PRECISION)}%)", color = "red")
     long = os.listdir(".")
-    long = [int(x) for x in long if x not in ["main.py", "mod", "TODO"]]
+    long = [int(x) for x in long if x.isnumeric()]
     long.sort()
     long = [str(x) for x in long]
     for nb in long:
